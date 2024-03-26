@@ -66,15 +66,18 @@ function run() {
                     const { data } = yield octokit.request(`GET ${runnersUrl}`);
                     // Group runners by OS
                     var runnersByOS = {};
+                    let allRunners = Array();
                     for (let runner of data.runners) {
                         const osName = runner.os.toLowerCase();
                         var runnerList = runnersByOS[osName] || [];
                         runnerList.push(runner.name);
                         runnersByOS[osName] = runnerList;
+                        allRunners.push(runner.name);
                     }
                     core.setOutput('windows', JSON.stringify(runnersByOS['windows']));
                     core.setOutput('linux', JSON.stringify(runnersByOS['linux']));
                     core.setOutput('mac', JSON.stringify(runnersByOS['mac']));
+                    core.setOutput('all', JSON.stringify(allRunners));
                 }
             }
         }
