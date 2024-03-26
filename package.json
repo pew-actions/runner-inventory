@@ -1,7 +1,7 @@
 {
-  "name": "action-google-drive-enum-files",
+  "name": "action-runner-inventory",
   "version": "1.0.0",
-  "description": "GitHub action to enumerate files in a Google drive",
+  "description": "GitHub action to enumerate self-hosted runners",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc && ncc build"
