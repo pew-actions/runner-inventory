@@ -37,7 +37,7 @@ async function run(): Promise<void> {
 
         // Group runners by OS
         var runnersByOS = {}
-        var allRunners = []
+        let allRunners = Array();
         for ( let runner of data.runners ) {
           const osName = runner.os.toLowerCase()
 
@@ -45,7 +45,7 @@ async function run(): Promise<void> {
           runnerList.push( runner.name )
           runnersByOS[osName] = runnerList
 
-          allRunners.push( runner.name );
+          allRunners.push( runner.name )
         }
 
         core.setOutput( 'windows', JSON.stringify( runnersByOS['windows'] ) )
