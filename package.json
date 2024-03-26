@@ -1,0 +1,20 @@
+{
+  "name": "action-google-drive-enum-files",
+  "version": "1.0.0",
+  "description": "GitHub action to enumerate files in a Google drive",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc && ncc build"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.3",
+    "@vercel/ncc": "^0.34.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@octokit/action": "^4.0.10",
+    "@octokit/request-error": "^5.0.0",
+    "@types/node": "^18.11.0"
+  }
+}

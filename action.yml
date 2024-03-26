@@ -1,0 +1,21 @@
+name: 'Enumerate self-hosted runners by OS'
+description: 'Enumerates self-hosted runners in an organization'
+inputs:
+  organization:
+    description: 'Organization to query'
+    default: 'PlayEveryWare'
+  token:
+    description: 'GitHub token with organization_self_hosted_runners:read'
+    required: true
+
+outputs:
+  windows:
+    description: 'Json list of windows runners'
+  linux:
+    description: 'Json list of linux runners'
+  mac:
+    description: 'Json list of mac runners'
+
+runs:
+  using: node20
+  main: dist/index.js
