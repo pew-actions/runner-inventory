@@ -50,7 +50,7 @@ async function run(): Promise<void> {
 
         core.setOutput( 'windows', JSON.stringify( runnersByOS['windows'] ) )
         core.setOutput( 'linux', JSON.stringify( runnersByOS['linux'] ) )
-        core.setOutput( 'mac', JSON.stringify( runnersByOS['mac'] ) )
+        core.setOutput( 'mac', JSON.stringify( runnersByOS['macos'] ) )
         core.setOutput( 'all', JSON.stringify( allRunners ) )
       }
     }
