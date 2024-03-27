@@ -7,6 +7,9 @@ inputs:
   token:
     description: 'GitHub token with organization_self_hosted_runners:read'
     required: true
+  filter:
+    description: 'Filter runners matching this expression'
+    required: false
 
 outputs:
   windows:

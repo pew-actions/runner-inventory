@@ -16,6 +16,9 @@ async function run(): Promise<void> {
     return
   }
 
+  const filter = core.getInput('filter')
+  const filterRE = filter && RegExp( filter, 'g' )
+
   const octokit = new Octokit({
     auth: token,
   })
@@ -39,6 +42,11 @@ async function run(): Promise<void> {
         var runnersByOS = {}
         let allRunners = Array();
         for ( let runner of data.runners ) {
+
+          if ( filterRE && !runner.name.match( filterRE ) ) {
+            continue
+          }
+
           const osName = runner.os.toLowerCase()
 
           var runnerList = runnersByOS[osName] || []

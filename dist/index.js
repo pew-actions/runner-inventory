@@ -53,6 +53,8 @@ function run() {
             core.setFailed('No access token passed to the action');
             return;
         }
+        const filter = core.getInput('filter');
+        const filterRE = filter && RegExp(filter, 'g');
         const octokit = new action_1.Octokit({
             auth: token,
         });
@@ -68,6 +70,9 @@ function run() {
                     var runnersByOS = {};
                     let allRunners = Array();
                     for (let runner of data.runners) {
+                        if (filterRE && !runner.name.match(filterRE)) {
+                            continue;
+                        }
                         const osName = runner.os.toLowerCase();
                         var runnerList = runnersByOS[osName] || [];
                         runnerList.push(runner.name);
