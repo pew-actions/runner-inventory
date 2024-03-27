@@ -55,6 +55,7 @@ function run() {
         }
         const filter = core.getInput('filter');
         const filterRE = filter && RegExp(filter, 'g');
+        const groupFilter = core.getInput('group');
         const octokit = new action_1.Octokit({
             auth: token,
         });
@@ -62,7 +63,8 @@ function run() {
             // Query runner groups
             const { data } = yield octokit.request(`GET https://api.github.com/orgs/${organization}/actions/runner-groups`);
             for (let group of data.runner_groups) {
-                if (group.default) {
+                const matchesGroupFilter = groupFilter && group.name == groupFilter;
+                if (matchesGroupFilter || group.default) {
                     // Fetch runners in the group
                     const runnersUrl = group.runners_url;
                     const { data } = yield octokit.request(`GET ${runnersUrl}`);
