@@ -19,6 +19,8 @@ async function run(): Promise<void> {
   const filter = core.getInput('filter')
   const filterRE = filter && RegExp( filter, 'g' )
 
+  const groupFilter = core.getInput('group')
+
   const octokit = new Octokit({
     auth: token,
   })
@@ -30,7 +32,9 @@ async function run(): Promise<void> {
     )
 
     for ( let group of data.runner_groups ) {
-      if ( group.default ) {
+
+      const matchesGroupFilter = groupFilter && group.name == groupFilter
+      if ( matchesGroupFilter || group.default ) {
 
         // Fetch runners in the group
         const runnersUrl = group.runners_url;

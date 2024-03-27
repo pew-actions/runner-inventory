@@ -10,6 +10,9 @@ inputs:
   filter:
     description: 'Filter runners matching this expression'
     required: false
+  group:
+    description: 'Optional runner group to query'
+    required: false
 
 outputs:
   windows:
