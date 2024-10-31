@@ -3,7 +3,7 @@ description: 'Enumerates self-hosted runners in an organization'
 inputs:
   organization:
     description: 'Organization to query'
-    default: 'PlayEveryWare'
+    default: ${{ github.repository_owner }}
   token:
     description: 'GitHub token with organization_self_hosted_runners:read'
     required: true
